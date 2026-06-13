@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Route, Routes, Outlet } from "react-router-dom"
 import Header from "./components/Header"
 import Hero from "./pages/Hero"
+import Home from "./pages/Home"
 
 function Layout(){
   return (
@@ -16,7 +17,7 @@ const App = () => {
       <Router>
         <Routes>
           <Route element={<Layout/>}>
-          <Route path="/" element={<Hero/>}/>
+          <Route path="/" element={<Home/>}/>
           </Route>
         </Routes>
       </Router>
