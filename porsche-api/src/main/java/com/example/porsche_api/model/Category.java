@@ -40,7 +40,7 @@ public class Category {
     @Size(min = 2, max = 30)
     @Column(nullable = false, length = 30)
     private String name;
-    
+
     private String description;
 
     @Column(name = "image_configurator_url")
@@ -49,8 +49,11 @@ public class Category {
     @Column(name = "image_card_url")
     private String imageCardUrl;
 
-    @Column(name = "image_hero_url")
-    private String imageHeroUrl;
+    @Column(name = "image_hero_desktop_url")
+    private String imageHeroDesktopUrl;
+
+    @Column(name = "image_hero_mobile_url")
+    private String imageHeroMobileUrl;
 
     @NotBlank
     @Size(min = 3, max = 100)

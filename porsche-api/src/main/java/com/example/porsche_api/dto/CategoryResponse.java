@@ -15,7 +15,8 @@ public class CategoryResponse {
     private String description;
     private String imageConfiguratorUrl;
     private String imageCardUrl;
-    private String imageHeroUrl;
+    private String imageHeroDesktopUrl;
+    private String imageHeroMobileUrl;
     private String tagline;
     private String[] driveType;
     private EngineType engineType;
