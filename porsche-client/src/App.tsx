@@ -1,6 +1,5 @@
 import { BrowserRouter as Router, Route, Routes, Outlet } from "react-router-dom"
 import Header from "./components/Header"
-import Hero from "./pages/Hero"
 import Home from "./pages/Home"
 
 function Layout(){
@@ -21,9 +20,7 @@ const App = () => {
           </Route>
         </Routes>
       </Router>
-      
     </div>
   )
 }
-
 export default App

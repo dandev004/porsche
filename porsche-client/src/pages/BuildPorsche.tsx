@@ -9,7 +9,7 @@ import { GoArrowLeft, GoArrowRight } from "react-icons/go"
 import "swiper/css"
 
 const BuildPorsche = () => {
-  const BASE_URL = "http://localhost:8080/api"
+  const BASE_URL = "http://localhost:8080/api/category"
 
   const [categories, setCategories] = useState<Category[]>([])
   const swiperRef = useRef<any>(null)
@@ -18,7 +18,7 @@ const BuildPorsche = () => {
 
   const fetchCategories = async () => {
     try {
-      const res = await axios.get(BASE_URL + "/category")
+      const res = await axios.get(BASE_URL + "/configurable")
       setCategories(res.data)
     } catch (err: any) {
       setError(err.message || "Something was wrong")
@@ -30,7 +30,7 @@ const BuildPorsche = () => {
   }, [])
 
   return (
-    <section className="h-screen w-full bg-white mt-20 md:pl-30">
+    <section className="h-full w-full bg-white mt-20 md:pl-30">
       <h1 className="px-6 text-2xl lg:text-3xl">
         Build your own Porsche
       </h1>
@@ -43,7 +43,7 @@ const BuildPorsche = () => {
         <Swiper
           modules={[Navigation]}
           spaceBetween={10}
-          slidesPerView={1.1}
+          slidesPerView={1.12}
           onSwiper={(swiper) => (swiperRef.current = swiper)}
           breakpoints={{
             640: {
@@ -58,10 +58,10 @@ const BuildPorsche = () => {
           }}
         >
           {categories.map((c) => (
-            <SwiperSlide key={c.name}>
+            <SwiperSlide key={c.id}>
               <div className="pl-6 flex flex-col items-center">
-                <img src={c.imageUrl} className="w-full py-10 object-contain" />
-                <button className="w-full md:w-auto py-4 px-8 bg-[#DBDBDE] rounded-md">
+                <img src={c.imageConfiguratorUrl} className="w-full py-10 object-contain" />
+                <button className="w-full md:w-auto py-4 px-8 bg-[#DBDBDE] rounded-md hover:bg-[#f4f4f8] cursor-pointer">
                   {c.name}
                 </button>
               </div>
@@ -74,7 +74,6 @@ const BuildPorsche = () => {
             >
               <GoArrowLeft size={25} />
             </button>
-
             <button
               onClick={() => swiperRef.current?.slideNext()}
               className="w-10 h-10 rounded-full hover:bg-gray-200 flex items-center justify-center transition duration-300 cursor-pointer"
@@ -82,7 +81,6 @@ const BuildPorsche = () => {
               <GoArrowRight size={25} />
             </button>
           </div>
-
         </Swiper>
 
       )}
