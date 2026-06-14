@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Route, Routes, Outlet } from "react-router-dom"
 import Header from "./components/Header"
 import Home from "./pages/Home"
+import ModelsDetails from "./pages/ModelsDetails"
 
 function Layout(){
   return (
@@ -17,6 +18,7 @@ const App = () => {
         <Routes>
           <Route element={<Layout/>}>
           <Route path="/" element={<Home/>}/>
+          <Route path="/model-pages/:name" element={<ModelsDetails/>}/>
           </Route>
         </Routes>
       </Router>

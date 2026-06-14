@@ -5,6 +5,7 @@ import { Swiper, SwiperSlide } from "swiper/react"
 import { Navigation } from "swiper/modules"
 import "swiper/css"
 import { GoArrowLeft, GoArrowRight } from 'react-icons/go'
+import { useNavigate} from 'react-router-dom'
 
 const ModelsPresentation = () => {
   const BASE_URL = "http://localhost:8080/api/category"
@@ -12,6 +13,8 @@ const ModelsPresentation = () => {
   const [categories, setCategories] = useState<Category[]>([])
   const [error, setError] = useState<string>("")
   const swiperRef = useRef<any>(null)
+
+  const navigate = useNavigate();
 
   const fetchCategories = async () => {
     try {
@@ -30,7 +33,7 @@ const ModelsPresentation = () => {
       <h1 className='px-6 text-2xl lg:text-3xl'>Models Porsche</h1>
       {
         error ? (
-          <div className="w-[80%] h-[40%] m-12 px-12 bg-[#F1F1F4] rounded-md flex flex-col justify-center gap-2">
+          <div className="w-[80%] h-100 m-12 px-12 bg-[#F1F1F4] rounded-md flex flex-col justify-center gap-2">
             <h2 className="font-normal text-2xl lg:text-4xl">I'm sorry. Something went wrong.</h2>
             <p>Unfortunately, we were unable to load any cars. Please try refreshing the page or check back later
               if the error persists.
@@ -64,7 +67,9 @@ const ModelsPresentation = () => {
                       <div className='pl-2 flex flex-col flex-1 gap-4'>
                         <h3 className='text-2xl'>{c.name}</h3>
                         <p>{c.description}</p>
-                        <button className='mt-auto w-full flex justify-center py-4 px-8 bg-[#DBDBDE] rounded-md'>
+                        <button 
+                        onClick={() => navigate(`/model-pages/${c.name}`)}
+                        className='mt-auto w-full flex justify-center py-4 px-8 bg-[#DBDBDE] rounded-md'>
                           Read more
                         </button>
                       </div>
@@ -99,7 +104,9 @@ const ModelsPresentation = () => {
                     <div className='pl-2 flex flex-col flex-1 gap-4'>
                       <h3 className='text-2xl'>{c.name}</h3>
                       <p>{c.description}</p>
-                      <button className='mt-auto w-[60%] py-4 px-8 bg-[#DBDBDE] rounded-md hover:bg-[#f4f4f8] cursor-pointer'>
+                      <button 
+                      onClick={() => navigate(`/model-pages/${c.name}`)}
+                      className='mt-auto w-[60%] py-4 px-8 bg-[#DBDBDE] rounded-md hover:bg-[#f4f4f8] cursor-pointer'>
                         Read more
                       </button>
                     </div>

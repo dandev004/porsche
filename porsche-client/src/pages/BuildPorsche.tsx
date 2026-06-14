@@ -35,7 +35,7 @@ const BuildPorsche = () => {
         Build your own Porsche
       </h1>
       {error ? (
-        <div className="w-[80%] h-[40%] m-12 px-12 bg-[#F1F1F4] rounded-md flex flex-col  justify-center gap-2">
+        <div className="w-[80%] h-100 m-12 px-12 bg-[#F1F1F4] rounded-md flex flex-col  justify-center gap-2">
           <h2 className="font-normal text-2xl lg:text-4xl">I'm sorry. Something went wrong.</h2>
           <p>Unfortunately, we were unable to load any cars. Please try refreshing the page or check back later if the error persists.</p>
         </div>
