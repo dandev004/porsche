@@ -1,11 +1,13 @@
 
-import HeroModelsDetails from './HeroModelsDetails';
-import IntroModelsDetails from './IntroModelsDetails';
+import HeroModelsDetails from '../components/HeroModelsDetails';
+import IntroModelsDetails from '../components/IntroModelsDetails';
+import SectionModelsDetails from '../components/SectionModelsDetails';
 const ModelsDetails = () => {
     return (
         <div>
             <HeroModelsDetails/>
             <IntroModelsDetails/>
+            <SectionModelsDetails/>
         </div>
     )
 }

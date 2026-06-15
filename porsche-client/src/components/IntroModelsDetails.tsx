@@ -33,7 +33,7 @@ const IntroModelsDetails = () => {
                     </div>
                 ) :
                     (
-                        <div className="flex flex-col md:flex-row w-full md:w-[90%] items-start justify-center px-10 mx-auto lg:gap-8">
+                        <div className="flex flex-col md:flex-row w-full md:w-[90%] items-start justify-center px-10 mx-auto md:gap-8">
                             <div>
                                 <img src={intro?.imageUrl} alt={intro?.title} className="w-full rounded-lg" />
                             </div>
