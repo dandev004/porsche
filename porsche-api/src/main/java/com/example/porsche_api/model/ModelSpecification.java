@@ -14,6 +14,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.persistence.UniqueConstraint;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
@@ -23,36 +24,32 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "category_sections")
+@Table(name = "model_specifications",
+       uniqueConstraints = @UniqueConstraint(columnNames = {"model_id", "specification_id"}))
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class CategorySection {
+public class ModelSpecification {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    @Column(updatable = false, nullable = false)
+    @Column(nullable = false, updatable = false)
     private UUID id;
 
-    @NotBlank
-    @Size(min = 2, max = 100)
-    @Column(nullable = false, length = 100)
-    private String title;
-
-    @Column(columnDefinition = "TEXT" )
-    private String description;
-
-    @Column(name = "image_url")
-    private String imageUrl;
-
-    @Column(name = "sort_order")
-    private Integer sortOrder;
+    @ManyToOne
+    @JoinColumn(name = "model_id", nullable = false)
+    private Model model;
 
     @ManyToOne
-    @JoinColumn(name = "category_id", nullable = false)
-    private Category category;
+    @JoinColumn(name = "specification_id", nullable = false)
+    private Specification specification;
+
+    @NotBlank
+    @Size(min = 1, max = 100)
+    @Column(length = 100, nullable = false)
+    private String value;
 
     @CreationTimestamp
     @Column(name = "created_at")
