@@ -30,6 +30,12 @@ public class CategoryService {
         return response(category);
     }
 
+    public CategoryResponse getCategoryByName(String name) {
+        Category category = categoryRepository.findByName(name)
+        .orElseThrow(() -> new RuntimeException("Category not found"));
+        return response(category);
+    }
+
     public List<CategoryResponse> getConfigurableCategories(){
         return categoryRepository.findByIsConfigurableTrue()
             .stream()
