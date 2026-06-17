@@ -76,6 +76,7 @@ public class Category {
     private Double startingPrice;
 
     @Column(name = "is_configurable")
+    @Builder.Default
     private Boolean isConfigurable = true;
 
     @CreationTimestamp

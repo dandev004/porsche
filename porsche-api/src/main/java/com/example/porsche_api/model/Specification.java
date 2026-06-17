@@ -47,8 +47,8 @@ public class Specification {
     @Column(length = 100, nullable = false)
     private String name;
 
-    @Size(min = 1, max = 20)
-    @Column(length = 20)
+    @Size(min = 1, max = 50)
+    @Column(length = 50)
     private String unit;
 
     @Column(name = "display_order")
