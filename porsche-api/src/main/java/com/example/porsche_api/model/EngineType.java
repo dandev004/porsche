@@ -4,5 +4,6 @@ public enum EngineType {
     GASOLINE,
     HYBRID,
     DIESEL,
-    ELECTRIC
+    ELECTRIC,
+    PETROL
 }

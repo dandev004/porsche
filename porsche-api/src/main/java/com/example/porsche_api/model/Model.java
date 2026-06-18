@@ -11,6 +11,8 @@ import org.hibernate.annotations.UpdateTimestamp;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -49,10 +51,14 @@ public class Model {
     @NotNull
     @Column(name = "starting_price", nullable = false)
     private Double startingPrice;
-    
+
     @OneToMany(mappedBy = "model", cascade = CascadeType.ALL, orphanRemoval = true)
     @Builder.Default
     private List<ModelImage> images = new ArrayList<>();
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "engine_type", nullable = false)
+    private EngineType engineType;
 
     @CreationTimestamp
     @Column(name = "created_at")
