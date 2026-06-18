@@ -7,6 +7,7 @@ import { Navigation } from "swiper/modules"
 import { GoArrowLeft, GoArrowRight } from "react-icons/go"
 
 import "swiper/css"
+import { useNavigate } from "react-router-dom"
 
 const BuildPorsche = () => {
   const BASE_URL = "http://localhost:8080/api/category"
@@ -14,6 +15,8 @@ const BuildPorsche = () => {
   const [categories, setCategories] = useState<Category[]>([])
   const swiperRef = useRef<any>(null)
   const [error, setError] = useState<string>("")
+
+  const navigate = useNavigate();
 
 
   const fetchCategories = async () => {
@@ -61,7 +64,9 @@ const BuildPorsche = () => {
             <SwiperSlide key={c.id}>
               <div className="pl-6 flex flex-col items-center">
                 <img src={c.imageConfiguratorUrl} className="w-full py-10 object-contain" />
-                <button className="w-full md:w-auto py-4 px-8 bg-[#DBDBDE] rounded-md hover:bg-[#f4f4f8] cursor-pointer">
+                <button 
+                onClick={() => navigate(`/model-start/${c.name}`)}
+                className="w-full md:w-auto py-4 px-8 bg-[#DBDBDE] rounded-md hover:bg-[#f4f4f8] cursor-pointer">
                   {c.name}
                 </button>
               </div>
