@@ -1,6 +1,8 @@
 package com.example.porsche_api.model;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 import org.hibernate.annotations.CreationTimestamp;
@@ -13,6 +15,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -43,7 +46,7 @@ public class ConfiguratorSection {
     @Size(min = 2, max = 100)
     @Column(length = 100, nullable = false)
     private String name;
-    
+
     @Column(name = "display_order")
     private Integer displayOrder;
 
@@ -54,4 +57,8 @@ public class ConfiguratorSection {
     @UpdateTimestamp
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
+
+    @OneToMany(mappedBy = "configuratorSection")
+    @Builder.Default
+    private List<ConfiguratorCategory> configuratorCategories = new ArrayList<>();
 }
