@@ -2,6 +2,8 @@ package com.example.porsche_api.dto;
 
 import java.util.UUID;
 
+import com.example.porsche_api.model.Model;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -16,3 +18,4 @@ public class CategorySectionResponse {
     String imageUrl;
     Integer sortOrde;
 }
+

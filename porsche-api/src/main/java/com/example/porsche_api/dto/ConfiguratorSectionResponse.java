@@ -18,4 +18,5 @@ public class ConfiguratorSectionResponse {
     private String name;
     private Integer displayOrder;
     private List<ConfiguratorCategoryResponse> categories = new ArrayList<>();
+    private ModelResponse model;
 }

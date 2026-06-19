@@ -15,4 +15,5 @@ public class ModelImageResponse {
     UUID id;
     private String imageUrl;
     private Integer displayOrder;
+    private ImageType type;
 }

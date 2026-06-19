@@ -68,7 +68,7 @@ public class ModelService {
             model.getImages()
                 .stream()
                 .sorted(Comparator.comparing(ModelImage::getDisplayOrder))
-                .map(i -> new ModelImageResponse(i.getId(), i.getImageUrl(), i.getDisplayOrder()))
+                .map(i -> new ModelImageResponse(i.getId(), i.getImageUrl(), i.getDisplayOrder(), i.getImageType()))
                 .toList(),
             spec
         );

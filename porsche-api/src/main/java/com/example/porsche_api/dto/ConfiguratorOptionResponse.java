@@ -17,5 +17,5 @@ public class ConfiguratorOptionResponse {
     private String imageCategoryUrl;
     private String imageHeroUrl;
     private boolean isDefault;
-    private Integer displInteger;
+    private Integer displayOrder;
 }
