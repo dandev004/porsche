@@ -89,7 +89,19 @@ const ModelsStart = () => {
     setMinPower("");
   };
 
-
+  if (error) {
+    return (
+      <div className="w-[80%] h-100 m-12 px-12 bg-[#F1F1F4] rounded-md flex flex-col justify-center gap-2">
+        <h2 className="font-normal text-2xl lg:text-4xl">
+          I'm sorry. Something went wrong.
+        </h2>
+        <p>
+          Unfortunately, we were unable to load any cars. Please try refreshing
+          the page or check back later if the error persists.
+        </p>
+      </div>
+    );
+  }
   return (
     <div className="bg-[#EEEFF2]">
       <div className="mt-20 px-8">
@@ -109,7 +121,7 @@ const ModelsStart = () => {
               placeholder="For example Turbo S, 4S, GT"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="py-3 px-12 border-2 border-black/60 w-full"
+              className="py-3 px-12 border-2 border-black/60 w-full outline-none"
             />
           </div>
           <button className="border-2 p-3">
@@ -132,7 +144,7 @@ const ModelsStart = () => {
                       placeholder="For example Turbo S, 4S, GT"
                       value={search}
                       onChange={(e) => setSearch(e.target.value)}
-                      className="py-3 px-12 border-2 border-black/60 w-full placeholder:text-sm"
+                      className="py-3 px-12 border-2 border-black/60 w-full placeholder:text-sm outline-none"
                     />
                   </div>
                 </div>

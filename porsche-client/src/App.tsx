@@ -3,6 +3,7 @@ import Header from "./components/Header"
 import Home from "./pages/Home"
 import ModelsDetails from "./pages/ModelsDetails"
 import ModelsStart from "./pages/ModelsStart"
+import Configurator from "./pages/Configurator"
 
 function Layout(){
   return (
@@ -21,6 +22,7 @@ const App = () => {
           <Route path="/" element={<Home/>}/>
           <Route path="/model-pages/:name" element={<ModelsDetails/>}/>
           <Route path="/model-start/:name" element={<ModelsStart/>}/>
+          <Route path="/model/:name" element={<Configurator/>}/>
           </Route>
         </Routes>
       </Router>

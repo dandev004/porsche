@@ -6,12 +6,14 @@ import "swiper/css"
 import "swiper/css/pagination"
 import { useState } from "react";
 import TehnicalSpecificationModal from "./TehnicalSpecificationModal";
+import { useNavigate } from "react-router-dom";
 
 interface ModelCardProps {
     model: Model;
 }
 const ModelCard = ({ model }: ModelCardProps) => {
     const [openModal, setOpenModal] = useState<boolean>(false);
+    const navigate = useNavigate();
     return (
         <div className="relative bg-white rounded-lg px-4 w-[90%]">
             <div className="absolute top-2 left-2 px-2 bg-[#EEEFF2] rounded-md">
@@ -24,6 +26,7 @@ const ModelCard = ({ model }: ModelCardProps) => {
                 pagination={{ clickable: true, }}
             >
                 {[...(model.images ?? [])]
+                    .filter(img => img.type === 'SLIDER')
                     .sort((a, b) => a.displayOrder - b.displayOrder)
                     .map(img => (
                         <SwiperSlide key={img.id}>
@@ -76,7 +79,9 @@ const ModelCard = ({ model }: ModelCardProps) => {
                     <TehnicalSpecificationModal model={model} onClose={() => setOpenModal(false)}/>
                 )
             }
-            <button className="p-4 w-full bg-black text-white rounded-md my-6">Setting up</button>
+            <button 
+            onClick={() => navigate(`/model/${model.name}`)}
+            className="p-4 w-full bg-black text-white rounded-md my-6">Setting up</button>
             <div className="flex gap-2">
                 <input type="checkbox" className="mb-5 w-6 h-6 border-2" />
                 <h4>Compare</h4>

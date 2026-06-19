@@ -178,7 +178,7 @@ const TehnicalSpecificationModal = ({ model, onClose }: ModelProps) => {
           }
         </div>
         <div className="mt-5 bg-white w-full py-4 sticky bottom-0 z-10 border-t border-gray-100">
-          <Link to={"/configurator"} className="py-4 px-8 bg-black rounded-md text-white">
+          <Link to={`/model-start/${model.name}`} className="py-4 px-8 bg-black rounded-md text-white">
             Open the Configurator
           </Link>
         </div>
