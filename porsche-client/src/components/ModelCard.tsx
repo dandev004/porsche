@@ -4,13 +4,16 @@ import { Swiper, SwiperSlide } from "swiper/react"
 import { Pagination } from "swiper/modules"
 import "swiper/css"
 import "swiper/css/pagination"
+import { useState } from "react";
+import TehnicalSpecificationModal from "./TehnicalSpecificationModal";
 
 interface ModelCardProps {
     model: Model;
 }
 const ModelCard = ({ model }: ModelCardProps) => {
+    const [openModal, setOpenModal] = useState<boolean>(false);
     return (
-        <div className="relative bg-white rounded-lg px-4">
+        <div className="relative bg-white rounded-lg px-4 w-[90%]">
             <div className="absolute top-2 left-2 px-2 bg-[#EEEFF2] rounded-md">
                 <p className="text-sm">{model.engineType[0] + model.engineType.slice(1).toLowerCase()}</p>
             </div>
@@ -67,8 +70,19 @@ const ModelCard = ({ model }: ModelCardProps) => {
                 }
             </div>
 
-            <button className="text-sm underline">Technical data and standart equipment</button>
+            <button className="mt-5 text-sm underline cursor-pointer" onClick={() => setOpenModal(true)}>Technical data and standart equipment</button>
+            {
+                openModal && (
+                    <TehnicalSpecificationModal model={model} onClose={() => setOpenModal(false)}/>
+                )
+            }
             <button className="p-4 w-full bg-black text-white rounded-md my-6">Setting up</button>
+            <div className="flex gap-2">
+                <input type="checkbox" className="mb-5 w-6 h-6 border-2" />
+                <h4>Compare</h4>
+            </div>
+
+            
         </div>
     )
 }
